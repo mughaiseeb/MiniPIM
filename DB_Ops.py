@@ -96,21 +96,4 @@ class DB_Info:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
             return False
-# # Example usage
-# if __name__ == "__main__":
-#     db = MySQLDatabase(
-#         host="your_mysql_host",
-#         user="your_mysql_user",
-#         password="your_mysql_password",
-#         database="your_database_name"
-#     )
 
-#     db.connect()
-#     db.create_database()
-#     db.use_database()
-
-#     # Example table creation
-#     table_columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), age INT"
-#     db.create_table("example_table", table_columns)
-
-#     db.disconnect()
