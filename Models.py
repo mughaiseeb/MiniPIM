@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+# to handle connection string
 class connectionString:
     def  __init__(self , host , userName , passWord) -> None:
         self.host =host
@@ -17,7 +17,7 @@ class Product:
         self.Quantity = qty
         self.CategoryID  = catID
 
-
+# this class is better to use with FastAPI
 class ProductModel(BaseModel):
     
     id : int

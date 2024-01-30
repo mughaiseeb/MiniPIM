@@ -15,7 +15,7 @@ db= DB_Ops.DB_Info(
 
 )
 
-def getProducts():
+def getProducts():# get all products from db
     db.connect()
     db.use_database()
     query  = "SELECT * FROM products"
@@ -32,7 +32,7 @@ def getProducts():
         return []
 
 
-def getProductById(id):
+def getProductById(id):# get product from db by product id 
     db.connect()
     db.use_database()
     query  = f"SELECT * FROM products WHERE id ={id} "
@@ -48,7 +48,7 @@ def getProductById(id):
     else:
         return []
 
-def getProductBySKU(sku):
+def getProductBySKU(sku): # get product from db by sku 
     db.connect()
     db.use_database()
     query  = f"SELECT * FROM products WHERE ProductSKU ='{sku}' "
@@ -65,7 +65,7 @@ def getProductBySKU(sku):
         return []
 
 
-
+# create new product in db 
 def createNewProduct(product: Product):
     db.connect()
     db.use_database()
@@ -86,8 +86,8 @@ def updateProduct(product: Product): # add check for the product id if exists
     db.disconnect()
     return productIdResult # return inserted Product Id
 
+# delete product from db
 def deleteProduct(productId):
-    
     db.connect()
     db.use_database()
     query  = f"DELETE FROM products WHERE id = {productId}"
@@ -97,6 +97,7 @@ def deleteProduct(productId):
     db.disconnect()
     return result
 
+#to build the update query for the product to avoid null values and set string and int values 
 def buildProductUpdateQuery(product: Product):
     result_string = ""
     typeString = type(result_string)

@@ -25,7 +25,7 @@ class DB_Info:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
 
-    def create_database(self):
+    def create_database(self):# create table 
         try:
             print("this is the database name: "+self.database)
             self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.database}")
@@ -33,32 +33,32 @@ class DB_Info:
         except mysql.connector.Error as err:
             print(f"Error: {err}")
 
-    def use_database(self):
+    def use_database(self):# user current db
         try:
             self.cursor.execute(f"USE {self.database}")
         except mysql.connector.Error as err:
             print(f"Error: {err}")
 
-    def create_table(self, table_name, columns):
+    def create_table(self, table_name, columns): # create table 
         try:
             self.cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({columns})")
             print(f"Table '{table_name}' created successfully")
         except mysql.connector.Error as err:
             print(f"Error: {err}")
 
-    def disconnect(self):
+    def disconnect(self): # connect to db
         if self.connection.is_connected():
             self.cursor.close()
             self.connection.close()
             print("Disconnected from MySQL server")
 
-    def exeute_insert_query(self , queryString): # let's test what it returns
+    def exeute_insert_query(self , queryString): #to execute insert query 
         try:
             self.cursor.execute(queryString)
             
-            # rows = self.cursor.fetchall()
+        
             print("Data Inserted successfully") 
-            # return rows
+           
             self.cursor.execute("SELECT LAST_INSERT_ID()")
             inserted_id = self.cursor.fetchone()[0]
 
@@ -68,10 +68,7 @@ class DB_Info:
         except mysql.connector.Error as err:
             print(f"Insert Query Error: {err}") 
             return None
-        # finally:
-            # if self.connection.is_connected():
-            #     self.disconnect(self)
-    # def execute_insert_query(self, queryString):
+ 
     def check_if_admin_exist(self):
         try:
             self.cursor.execute(f"SELECT * FROM users WHERE username = 'amdin'")

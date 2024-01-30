@@ -34,18 +34,13 @@ db.create_table("Products",table_columns)
 table_columns = "id INT AUTO_INCREMENT PRIMARY KEY, CategoryName VARCHAR(100)"
 db.create_table("Categories",table_columns)
 
-
+# to insert the superuser 
 query = "INSERT INTO users (UserName, UserEmail, UserPass, UserRoll, UserToken) VALUES ('amdin', 'mhd.mahm@gmail', 'QWer!@34', 'admin', '')"
 thereIsAdmin = db.check_if_admin_exist()
 if thereIsAdmin:
     print("The Admin is already there!")
 else:
     db.exeute_insert_query(query)
-
-
-
-# table_columns = "id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), age INT"
-# db.create_table("Products",table_columns)
 
 
 db.disconnect()

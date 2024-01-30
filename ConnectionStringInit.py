@@ -1,5 +1,5 @@
 from Models import connectionString as conn
-
+# this file is for init mysql connection string
 def  GetConText():
 
     myfile = open("ConText.txt" ,"r")

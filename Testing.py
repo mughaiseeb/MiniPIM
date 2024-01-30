@@ -1,3 +1,5 @@
+# this file is for testing project functions 
+
 import PIM_DB
 from Models import Product
 from decimal import Decimal

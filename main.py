@@ -19,7 +19,7 @@ async def get_products():# Get all Products
     return {"Products": products} # return all products
 
 
-
+#get product by id
 @app.get("/products/{product_id}")
 async def get_product_by_id(product_id: int) :
     product = PIM_DB.getProductById(product_id)
@@ -28,13 +28,14 @@ async def get_product_by_id(product_id: int) :
             status_code=404, detail=f"Product with id:{product_id} dose not exist"
         )
     return {product[0]} 
-    # return {"product":f"{product_id}"} # return product by id
-
+   
+#create new product
 @app.post("/products")
 async def post_product(product: ProductModel):
     productId = PIM_DB.createNewProduct(product)
     return {f"New Product Added with id {productId}"}
 
+#delete product 
 @app.delete("/products/{id}")
 async def delete_product(id):
     result = PIM_DB.deleteProduct(id)
@@ -44,6 +45,7 @@ async def delete_product(id):
         )
     return {"Prodcut Deleted"}
 
+#update product
 @app.put("/products")
 async def update_product(product: ProductModel):
     
@@ -52,6 +54,8 @@ async def update_product(product: ProductModel):
     if success:
         return {f"Product with id {product.id}  updated successfully !"}
     return {f"Product with id : ({product.id}) Not found"}
+
+#to implement 
 # # get users
 # @app.get("/users")
 # async def get_users(): #get all users
